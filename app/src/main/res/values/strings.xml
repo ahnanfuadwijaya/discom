@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">DiscoM</string>
+    <string name="title_discom_discover_movies">DiscoM - Discover Movies</string>
+    <string name="title_select_genre">Select Genre</string>
+    <string name="detail_fact_tag">Fact</string>
+    <string name="detail_status_tag">Status</string>
+    <string name="detail_release_date_tag">Release Date</string>
+    <string name="detail_runtime_tag">Runtime</string>
+    <string name="detail_budget_tag">Budget</string>
+    <string name="detail_revenue_tag">Revenue</string>
+    <string name="detail_vote_count">Vote Count</string>
+    <string name="detail_genre_tag">Genre</string>
+    <string name="detail_original_title_tag">Original Title</string>
+    <string name="detail_overview_tag">Overview</string>
+    <string name="detail_popularity_tag">Popularity</string>
+    <string name="detail_score_tag">Score</string>
+    <string name="detail_trailer_tag">Trailer</string>
+    <string name="detaiL_content_tag">Content</string>
+    <string name="detail_author_tag">Author</string>
+    <string name="detail_reviews_tag">Reviews</string>
+</resources>
