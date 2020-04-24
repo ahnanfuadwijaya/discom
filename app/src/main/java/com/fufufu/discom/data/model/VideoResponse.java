@@ -16,7 +16,7 @@ public class VideoResponse implements Parcelable {
     @SerializedName("results")
     private ArrayList<Video> videoList;
 
-    protected VideoResponse(Parcel in) {
+    private VideoResponse(Parcel in) {
         id = in.readInt();
         videoList = in.createTypedArrayList(Video.CREATOR);
     }
@@ -43,10 +43,6 @@ public class VideoResponse implements Parcelable {
 
     public ArrayList<Video> getVideoList() {
         return videoList;
-    }
-
-    public void setVideoList(ArrayList<Video> videoList) {
-        this.videoList = videoList;
     }
 
     @Override

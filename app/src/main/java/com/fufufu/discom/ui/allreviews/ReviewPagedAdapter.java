@@ -1,4 +1,4 @@
-package com.fufufu.discom.ui.detail;
+package com.fufufu.discom.ui.allreviews;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +27,7 @@ public class ReviewPagedAdapter extends PagedListAdapter<Review, ReviewPagedAdap
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_detail_review, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_all_reviews, parent, false);
         return new ViewHolder(view);
     }
 
@@ -45,8 +45,8 @@ public class ReviewPagedAdapter extends PagedListAdapter<Review, ReviewPagedAdap
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvAuthor = itemView.findViewById(R.id.tv_review_author_value);
-            tvContent = itemView.findViewById(R.id.tv_review_content_value);
+            tvAuthor = itemView.findViewById(R.id.tv_all_reviews_author_value);
+            tvContent = itemView.findViewById(R.id.tv_all_reviews_content_value);
         }
     }
 

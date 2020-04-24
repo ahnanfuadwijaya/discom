@@ -2,6 +2,7 @@ package com.fufufu.discom.ui.discover;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.fufufu.discom.R;
 import com.fufufu.discom.data.model.Movie;
 import com.fufufu.discom.ui.detail.DetailActivity;
-import com.fufufu.discom.viewmodelfactory.ViewModelFactory;
 
 import java.util.Objects;
 
@@ -45,9 +43,12 @@ public class DiscoverPagedAdapter extends PagedListAdapter<Movie, DiscoverPagedA
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         if(getItem(position)!= null){
             Context context = holder.itemView.getContext();
+            Drawable brokenImage = context.getResources().getDrawable(R.drawable.ic_broken_image_black_24dp);
             Glide.with(context)
                     .load(Objects.requireNonNull(getItem(position)).getPosterPath())
                     .thumbnail(0.1f)
+                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(14)))
+                    .error(brokenImage)
                     .into(holder.ivPoster);
             if(Objects.requireNonNull(getItem(position)).getVoteAverage()<7){
                 holder.ivScore.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_score_yellow_24dp, null));

@@ -19,19 +19,7 @@ public class MovieListResponse {
     @SerializedName("total_pages")
     private int totalPages;
 
-    public int getPage() {
-        return page;
-    }
-
     public List<Movie> getMovies() {
         return movies;
-    }
-
-    public int getTotalResults() {
-        return totalResults;
-    }
-
-    public int getTotalPages() {
-        return totalPages;
     }
 }

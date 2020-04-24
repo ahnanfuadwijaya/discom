@@ -9,7 +9,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 public class DetailMovie implements Parcelable {
-    private final String BASE_POSTER = "https://image.tmdb.org/t/p/w500";
     @Expose
     @SerializedName("id")
     private int id;
@@ -53,10 +52,7 @@ public class DetailMovie implements Parcelable {
     @SerializedName("vote_average")
     private float voteAverage;
 
-    public DetailMovie(){
-    }
-
-    DetailMovie(Parcel in) {
+    private DetailMovie(Parcel in) {
         id = in.readInt();
         title = in.readString();
         status = in.readString();
@@ -120,103 +116,52 @@ public class DetailMovie implements Parcelable {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getStatus() {
         return status;
-    }
-
-    public void setStatus(String releaseStatus) {
-        this.status = releaseStatus;
     }
 
     public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
     public int getRuntime() {
         return runtime;
-    }
-
-    public void setRuntime(int runtime) {
-        this.runtime = runtime;
     }
 
     public int getBudget() {
         return budget;
     }
 
-    public void setBudget(int budget) {
-        this.budget = budget;
-    }
-
     public int getRevenue() {
         return revenue;
-    }
-
-    public void setRevenue(int revenue) {
-        this.revenue = revenue;
     }
 
     public int getVoteCount() {
         return voteCount;
     }
 
-    public void setVoteCount(int voteCount) {
-        this.voteCount = voteCount;
-    }
-
     public ArrayList<Genre> getGenres() {
         return genreList;
     }
 
-    public void setGenres(ArrayList<Genre> genreList) {
-        this.genreList = genreList;
-    }
-
     public String getPosterPath() {
-        return BASE_POSTER+posterPath;
-    }
-
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
+        String BASE_POSTER = "https://image.tmdb.org/t/p/w500";
+        return BASE_POSTER +posterPath;
     }
 
     public String getOriginalTitle() {
         return originalTitle;
     }
 
-    public void setOriginalTitle(String originalTitle) {
-        this.originalTitle = originalTitle;
-    }
-
     public String getOverview() {
         return overview;
-    }
-
-    public void setOverview(String overview) {
-        this.overview = overview;
     }
 
     public float getPopularity() {
         return popularity;
     }
 
-    public void setPopularity(float popularity) {
-        this.popularity = popularity;
-    }
-
     public float getVoteAverage() {
         return voteAverage;
-    }
-
-    public void setVoteAverage(float voteAverage) {
-        this.voteAverage = voteAverage;
     }
 }

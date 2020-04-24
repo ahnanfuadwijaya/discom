@@ -1,15 +1,13 @@
 package com.fufufu.discom.ui.discover;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 import com.fufufu.discom.R;
 import com.fufufu.discom.data.model.Movie;
@@ -41,7 +39,7 @@ public class DiscoverActivity extends AppCompatActivity {
     }
 
     private static DiscoverViewModel obtainViewModel(AppCompatActivity activity) {
-        ViewModelFactory factory = ViewModelFactory.getInstance(activity.getApplication());
+        ViewModelFactory factory = ViewModelFactory.getInstance();
         return new ViewModelProvider(activity, factory).get(DiscoverViewModel.class);
     }
 }

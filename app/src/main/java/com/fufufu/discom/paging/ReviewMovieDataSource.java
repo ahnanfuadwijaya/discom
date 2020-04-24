@@ -3,14 +3,11 @@ package com.fufufu.discom.paging;
 import androidx.annotation.NonNull;
 import androidx.paging.PageKeyedDataSource;
 
-import com.fufufu.discom.data.model.Movie;
-import com.fufufu.discom.data.model.MovieListResponse;
 import com.fufufu.discom.data.model.Review;
 import com.fufufu.discom.data.model.ReviewResponse;
 import com.fufufu.discom.data.retrofit.MovieService;
 import com.fufufu.discom.data.retrofit.RetrofitClient;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,7 +21,7 @@ public class ReviewMovieDataSource extends PageKeyedDataSource<Long, Review> {
     private int movieId;
 
 
-    public ReviewMovieDataSource(int movieId){
+    ReviewMovieDataSource(int movieId){
         this.movieId = movieId;
     }
 
@@ -33,13 +30,14 @@ public class ReviewMovieDataSource extends PageKeyedDataSource<Long, Review> {
         Call<ReviewResponse> call = movieService.getReviews(movieId, 1);
         call.enqueue(new Callback<ReviewResponse>() {
             @Override
-            public void onResponse(Call<ReviewResponse> call, Response<ReviewResponse> response) {
+            public void onResponse(@NonNull Call<ReviewResponse> call, @NonNull Response<ReviewResponse> response) {
+                assert response.body() != null;
                 List<Review> reviewList = response.body().getReviewList();
                 callback.onResult(reviewList, null, (long)2);
             }
 
             @Override
-            public void onFailure(Call<ReviewResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<ReviewResponse> call, @NonNull Throwable t) {
 
             }
         });
@@ -55,13 +53,14 @@ public class ReviewMovieDataSource extends PageKeyedDataSource<Long, Review> {
         Call<ReviewResponse> call = movieService.getReviews(movieId, params.key.intValue());
         call.enqueue(new Callback<ReviewResponse>() {
             @Override
-            public void onResponse(Call<ReviewResponse> call, Response<ReviewResponse> response) {
+            public void onResponse(@NonNull Call<ReviewResponse> call, @NonNull Response<ReviewResponse> response) {
+                assert response.body() != null;
                 List<Review> reviewList = response.body().getReviewList();
                 callback.onResult(reviewList, params.key+1);
             }
 
             @Override
-            public void onFailure(Call<ReviewResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<ReviewResponse> call, @NonNull Throwable t) {
 
             }
         });

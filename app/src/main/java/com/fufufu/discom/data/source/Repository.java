@@ -1,7 +1,5 @@
 package com.fufufu.discom.data.source;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -13,6 +11,7 @@ import com.fufufu.discom.data.model.Genre;
 import com.fufufu.discom.data.model.GenreListResponse;
 import com.fufufu.discom.data.model.Movie;
 import com.fufufu.discom.data.model.Review;
+import com.fufufu.discom.data.model.ReviewResponse;
 import com.fufufu.discom.data.model.Video;
 import com.fufufu.discom.data.model.VideoResponse;
 import com.fufufu.discom.data.retrofit.MovieService;
@@ -49,11 +48,7 @@ public class Repository {
             }
 
             @Override
-            public void onFailure(Call<GenreListResponse> call, Throwable t) {
-                Log.d("Repository-getGenreList", "onFailure");
-                if(t.getMessage()!=null){
-                    Log.d("Message", t.getMessage());
-                }
+            public void onFailure(@NonNull Call<GenreListResponse> call,@NonNull  Throwable t) {
             }
         });
         return genreList;
@@ -70,7 +65,7 @@ public class Repository {
                 .build();
 
         MainThreadExecutor executor = new MainThreadExecutor();
-
+        
         movies = (new LivePagedListBuilder<Long,Movie>(discoverMovieDataSourceFactory,config))
                 .setBoundaryCallback(new PagedList.BoundaryCallback<Movie>() {
                     @Override
@@ -105,18 +100,16 @@ public class Repository {
         Call<VideoResponse> call = movieService.getVideoMovie(id);
         call.enqueue(new Callback<VideoResponse>() {
             @Override
-            public void onResponse(Call<VideoResponse> call, Response<VideoResponse> response) {
+            public void onResponse(@NonNull Call<VideoResponse> call, @NonNull Response<VideoResponse> response) {
                 if(response.body()!=null){
-                    videoList.setValue(response.body().getVideoList());
+                    if(response.body().getVideoList().size()!=0) {
+                        videoList.setValue(response.body().getVideoList());
+                    }
                 }
             }
 
             @Override
-            public void onFailure(Call<VideoResponse> call, Throwable t) {
-                Log.d("Repository-getVideoList", "onFailure");
-                if(t.getMessage()!=null){
-                    Log.d("Message", t.getMessage());
-                }
+            public void onFailure(@NonNull Call<VideoResponse> call, @NonNull Throwable t) {
             }
         });
         return videoList;
@@ -144,5 +137,25 @@ public class Repository {
                 .setFetchExecutor(executor)
                 .build();
         return reviewList;
+    }
+
+    public MutableLiveData<Review> getSampleReview(int movieId) {
+        final MutableLiveData<Review> reviewMutableLiveData = new MutableLiveData<>();
+        Call<ReviewResponse> call = movieService.getSampleReview(movieId);
+        call.enqueue(new Callback<ReviewResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<ReviewResponse> call, @NonNull Response<ReviewResponse> response) {
+                if(response.body()!=null){
+                    if (response.body().getReviewList().size()!=0){
+                        reviewMutableLiveData.setValue(response.body().getReviewList().get(0));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ReviewResponse> call, @NonNull Throwable t) {
+            }
+        });
+        return reviewMutableLiveData;
     }
 }

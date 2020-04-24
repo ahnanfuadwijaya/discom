@@ -30,4 +30,7 @@ public interface MovieService {
     @GET("3/movie/{movie_id}/reviews?api_key="+API_KEY)
     Call<ReviewResponse> getReviews(@Path("movie_id") long movieID,
                                     @Query("page") int page);
+
+    @GET("3/movie/{movie_id}/reviews?api_key="+API_KEY)
+    Call<ReviewResponse> getSampleReview(@Path("movie_id") long movieID);
 }

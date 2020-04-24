@@ -25,7 +25,7 @@ public class Review implements Parcelable {
     @SerializedName("url")
     private String url;
 
-    protected Review(Parcel in) {
+    private Review(Parcel in) {
         author = in.readString();
         content = in.readString();
         id = in.readString();
@@ -48,16 +48,8 @@ public class Review implements Parcelable {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getContent() {
         return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public String getId() {
@@ -66,14 +58,6 @@ public class Review implements Parcelable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     @Override
@@ -90,8 +74,6 @@ public class Review implements Parcelable {
     }
     public static DiffUtil.ItemCallback<Review> DIFF_CALLBACK =
             new DiffUtil.ItemCallback<Review>() {
-                // Concert details may have changed if reloaded from the database,
-                // but ID is fixed.
                 @Override
                 public boolean areItemsTheSame(Review oldReview, Review newReview) {
                     return oldReview.getId().equals(newReview.getId());

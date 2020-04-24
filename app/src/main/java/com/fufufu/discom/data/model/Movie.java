@@ -12,7 +12,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
 public class Movie implements Parcelable {
-    private final String BASE_POSTER = "https://image.tmdb.org/t/p/w500";
     @Expose
     @SerializedName("id")
     private int id;
@@ -73,33 +72,18 @@ public class Movie implements Parcelable {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
 
     public String getOverview() {
         return overview;
-    }
-
-    public void setOverview(String overview) {
-        this.overview = overview;
     }
 
     public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
     public String getPosterPath() {
-        return BASE_POSTER+posterPath;
-    }
-
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
+        String BASE_POSTER = "https://image.tmdb.org/t/p/w500";
+        return BASE_POSTER +posterPath;
     }
 
 
@@ -107,16 +91,8 @@ public class Movie implements Parcelable {
         return popularity;
     }
 
-    public void setPopularity(float popularity) {
-        this.popularity = popularity;
-    }
-
     public float getVoteAverage() {
         return voteAverage;
-    }
-
-    public void setVoteAverage(float voteAverage) {
-        this.voteAverage = voteAverage;
     }
 
     @Override
@@ -137,8 +113,6 @@ public class Movie implements Parcelable {
 
     public static DiffUtil.ItemCallback<Movie> DIFF_CALLBACK =
             new DiffUtil.ItemCallback<Movie>() {
-                // Concert details may have changed if reloaded from the database,
-                // but ID is fixed.
                 @Override
                 public boolean areItemsTheSame(Movie oldMovie, Movie newMovie) {
                     return oldMovie.getId() == newMovie.getId();

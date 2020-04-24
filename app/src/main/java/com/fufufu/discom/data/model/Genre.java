@@ -23,14 +23,6 @@ public class Genre implements Parcelable {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public static Creator<Genre> getCREATOR() {
-        return CREATOR;
-    }
-
     @Expose
     @SerializedName("name")
     private String name;

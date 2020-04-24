@@ -15,7 +15,13 @@
     <string name="detail_popularity_tag">Popularity</string>
     <string name="detail_score_tag">Score</string>
     <string name="detail_trailer_tag">Trailer</string>
-    <string name="detaiL_content_tag">Content</string>
+    <string name="detail_content_tag">Content</string>
     <string name="detail_author_tag">Author</string>
     <string name="detail_reviews_tag">Reviews</string>
+    <string name="content_desc_popularity">Popularity</string>
+    <string name="btn_show_all_reviews">Show All Reviews</string>
+    <string name="message_no_data">No Data</string>
+    <string name="content_desc_author">Author</string>
+    <string name="content_desc_poster">Poster</string>
+    <string name="content_desc_score">Score</string>
 </resources>

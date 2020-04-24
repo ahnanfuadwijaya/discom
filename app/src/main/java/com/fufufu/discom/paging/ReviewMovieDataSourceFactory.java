@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.paging.DataSource;
 
 public class ReviewMovieDataSourceFactory extends DataSource.Factory {
-    private ReviewMovieDataSource reviewMovieDataSource;
     private int movieId;
     private MutableLiveData<ReviewMovieDataSource> mutableLiveData;
 
@@ -15,16 +14,8 @@ public class ReviewMovieDataSourceFactory extends DataSource.Factory {
 
     @Override
     public DataSource create() {
-        reviewMovieDataSource = new ReviewMovieDataSource(movieId);
+        ReviewMovieDataSource reviewMovieDataSource = new ReviewMovieDataSource(movieId);
         mutableLiveData.postValue(reviewMovieDataSource);
         return reviewMovieDataSource;
-    }
-
-    public MutableLiveData<ReviewMovieDataSource> getMutableLiveData(){
-        return mutableLiveData;
-    }
-
-    public int getMovieId() {
-        return movieId;
     }
 }

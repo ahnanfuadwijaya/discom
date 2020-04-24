@@ -15,7 +15,6 @@ import com.fufufu.discom.viewmodelfactory.ViewModelFactory;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private MainViewModel mainViewModel;
     private RecyclerView rvGenreList;
     private GenreAdapter genreAdapter;
 
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         rvGenreList.setLayoutManager(new LinearLayoutManager(getBaseContext(), RecyclerView.VERTICAL, false));
         rvGenreList.setHasFixedSize(true);
         genreAdapter = new GenreAdapter();
-        mainViewModel = obtainViewModel(this);
+        MainViewModel mainViewModel = obtainViewModel(this);
         mainViewModel.getGenreList().observe(this, new Observer<ArrayList<Genre>>() {
             @Override
             public void onChanged(ArrayList<Genre> genres) {
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private static MainViewModel obtainViewModel(AppCompatActivity activity) {
-        ViewModelFactory factory = ViewModelFactory.getInstance(activity.getApplication());
+        ViewModelFactory factory = ViewModelFactory.getInstance();
         return new ViewModelProvider(activity, factory).get(MainViewModel.class);
     }
 }

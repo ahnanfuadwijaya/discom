@@ -14,12 +14,11 @@ import com.fufufu.discom.data.model.Genre;
 import com.fufufu.discom.ui.discover.DiscoverActivity;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.Holder> {
     private ArrayList<Genre> genreList;
 
-    public void setGenreList(ArrayList<Genre> genreList) {
+    void setGenreList(ArrayList<Genre> genreList) {
         this.genreList = genreList;
     }
 
@@ -52,7 +51,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.Holder> {
         return 0;
     }
 
-    public class Holder extends RecyclerView.ViewHolder {
+    static class Holder extends RecyclerView.ViewHolder {
         private TextView tvGenre;
         Holder(@NonNull View itemView) {
             super(itemView);

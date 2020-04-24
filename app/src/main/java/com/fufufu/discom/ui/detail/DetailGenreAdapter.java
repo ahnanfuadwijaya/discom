@@ -1,6 +1,5 @@
 package com.fufufu.discom.ui.detail;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fufufu.discom.R;
 import com.fufufu.discom.data.model.Genre;
-import com.fufufu.discom.data.model.Video;
-import com.fufufu.discom.ui.discover.DiscoverActivity;
-import com.fufufu.discom.ui.home.GenreAdapter;
 
 import java.util.ArrayList;
 
 public class DetailGenreAdapter extends RecyclerView.Adapter<DetailGenreAdapter.Holder> {
     private ArrayList<Genre> genreList;
-    public void setGenreList(ArrayList<Genre> genreList) {
+    void setGenreList(ArrayList<Genre> genreList) {
         this.genreList = genreList;
     }
 
@@ -43,7 +39,7 @@ public class DetailGenreAdapter extends RecyclerView.Adapter<DetailGenreAdapter.
         return 0;
     }
 
-    public class Holder extends RecyclerView.ViewHolder {
+    static class Holder extends RecyclerView.ViewHolder {
         private TextView tvGenre;
         Holder(@NonNull View itemView) {
             super(itemView);
